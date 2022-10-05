@@ -1,0 +1,38 @@
+scalar Upload
+
+type File {
+    filename: String!
+    mimetype: String!
+    encodicng: String!
+}
+
+type FileUploadResponse {
+    ETag: String!
+    Location: String!
+    key: String!
+    Key: String!
+    Bucket: String!
+}
+
+type User {
+    id: ID!
+    name: String!
+    photo: String!
+}
+
+input UserInput {
+    id: ID!
+    name: String!
+    photo: Upload!
+}
+
+type Query {
+    getMessage: String!
+    getUsers: [User]
+}
+
+type Mutation {
+    singleUpload(file: Upload!): File!
+    createUser(input: UserInput!): User!
+    fileUpload(file: Upload!): FileUploadResponse!
+}
